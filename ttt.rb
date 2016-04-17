@@ -8,6 +8,11 @@ def display_board(board)
   puts " #{board[2][0]} | #{board[2][1]} | #{board[2][2]} \n\n"
 end
 
+def is_avail?(coordinates)
+  #Take coordinates and check if position available
+  #return true if position is available, return false if position is taken
+end
+
 
 def play_game(num_players = 2)
   board = Array.new(3) { Array.new(3, "?") }
@@ -18,7 +23,11 @@ def play_game(num_players = 2)
     player_spot = gets.chomp
     player_spot_re = /^\(?([0-2]),?([0-2])\)?$/
     coordinates = player_spot_re.match(player_spot)
-    valid = true unless coordinates.nil?
+    if !is_avail?(coordinates)
+      puts "That spot is not available"
+    else
+      valid = true unless coordinates.nil?
+    end
   end
 end
 
